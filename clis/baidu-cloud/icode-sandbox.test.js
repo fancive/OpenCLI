@@ -2,6 +2,18 @@ import { describe, expect, it } from 'vitest';
 import { selectSandboxBranches } from './icode-sandbox.js';
 
 describe('baidu-cloud icode-sandbox selection', () => {
+  it('keeps the amisapi sandbox branch selected from its sandbox remark', () => {
+    const selected = selectSandboxBranches(
+      [
+        { name: 'amisapi_1-0-1347_BRANCH', remark: '灵动宝宝' },
+        { name: 'amisapi_1-0-1093_BRANCH', remark: '20251024沙盒分支' },
+      ],
+      'amisapi',
+    );
+
+    expect(selected.map((item) => item.name)).toEqual(['amisapi_1-0-1093_BRANCH']);
+  });
+
   it('prefers an explicitly named shahe branch over newer generic candidates', () => {
     const selected = selectSandboxBranches(
       [

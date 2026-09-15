@@ -2993,6 +2993,108 @@
     "sourceFile": "autohome/score.js"
   },
   {
+    "site": "baidu-cloud",
+    "name": "amisapi-sandbox-deploy",
+    "description": "在 amisapi iPipe deploy 流水线中预览或执行指定沙盒分支的部署沙盒阶段",
+    "access": "write",
+    "domain": "console.cloud.baidu-int.com",
+    "strategy": "cookie",
+    "browser": true,
+    "args": [
+      {
+        "name": "branch",
+        "type": "string",
+        "required": true,
+        "positional": true,
+        "help": "已合入 feature 的 amisapi 沙盒分支"
+      },
+      {
+        "name": "action",
+        "type": "string",
+        "default": "preview",
+        "required": false,
+        "help": "preview 只读输出候选；deploy 点击部署沙盒阶段",
+        "choices": [
+          "preview",
+          "deploy"
+        ]
+      },
+      {
+        "name": "expected-sha",
+        "type": "string",
+        "required": false,
+        "help": "沙盒分支完整 40 位 HEAD SHA；deploy 必填"
+      },
+      {
+        "name": "build-id",
+        "type": "string",
+        "required": false,
+        "help": "preview 返回的 pipeline build ID；deploy 必填"
+      },
+      {
+        "name": "confirm",
+        "type": "string",
+        "required": false,
+        "help": "preview 返回的精确确认串；deploy 必填"
+      },
+      {
+        "name": "wait",
+        "type": "int",
+        "default": 20,
+        "required": false,
+        "help": "点击后等待页面状态变化的秒数，1-25"
+      }
+    ],
+    "columns": [
+      "action",
+      "branch",
+      "build",
+      "revision",
+      "stage",
+      "status",
+      "detail"
+    ],
+    "type": "js",
+    "modulePath": "baidu-cloud/amisapi-sandbox-deploy.js",
+    "sourceFile": "baidu-cloud/amisapi-sandbox-deploy.js",
+    "navigateBefore": "https://console.cloud.baidu-int.com"
+  },
+  {
+    "site": "baidu-cloud",
+    "name": "icode-sandbox",
+    "description": "通过 iPipe API 查找 iCode 仓库的沙盒分支",
+    "access": "read",
+    "domain": "console.cloud.baidu-int.com",
+    "strategy": "cookie",
+    "browser": true,
+    "args": [
+      {
+        "name": "repo",
+        "type": "string",
+        "required": true,
+        "positional": true,
+        "help": "仓库路径, 如 baidu/inputmethod/gms-v3"
+      },
+      {
+        "name": "workspace",
+        "type": "int",
+        "required": false,
+        "help": "workspace ID (自动推断, 也可手动指定)"
+      }
+    ],
+    "columns": [
+      "branch",
+      "remark",
+      "status",
+      "time",
+      "user"
+    ],
+    "type": "js",
+    "modulePath": "baidu-cloud/icode-sandbox.js",
+    "sourceFile": "baidu-cloud/icode-sandbox.js",
+    "navigateBefore": "https://console.cloud.baidu-int.com"
+  },
+  {
     "site": "baidu-scholar",
     "name": "search",
     "description": "百度学术搜索",
