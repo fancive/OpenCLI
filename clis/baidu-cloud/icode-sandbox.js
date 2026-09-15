@@ -10,6 +10,7 @@ const REPO_PATTERN = /^[\w-]+(\/[\w.-]+)+$/;
  */
 
 const WORKSPACE_MAP = {
+  'amisapi': 141290,
   'gms-v3': 374942,
   'sapi-v2': 401746,
   'servergoapi': 323040,
